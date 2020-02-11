@@ -29,6 +29,8 @@ def index(request):
     # POST request
     if encrypt_type == 'raw':
         # plaintext mode
+        print(request.body)
+
         msg = parse_message(request.body)
         if msg.type == 'text':
             reply = talk(msg.content.strip())
