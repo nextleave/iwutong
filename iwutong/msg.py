@@ -33,7 +33,8 @@ def index(request):
 
         msg = parse_message(request.body)
         if msg.type == 'text':
-            reply = talk(msg.content.strip())
+            resp = talk(msg.content.strip())
+            reply = create_reply(resp, msg)
         else:
             reply = create_reply('Sorry, can not handle this for now', msg)
         return HttpResponse(
